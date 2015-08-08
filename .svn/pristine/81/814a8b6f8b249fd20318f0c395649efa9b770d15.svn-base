@@ -1,0 +1,38 @@
+//templates
+//map.templates.ImageBasedBlockTemplate
+//map.templates.TeleporterTemplate
+//map.templates.InterstateTeleporterTemplate
+//map.templates.WildGrassTemplate
+
+Tree {
+	template = map.templates.ImageBasedBlockTemplate;
+	sprite = ressources/sprites/map/tree.png;
+	enterable = false;
+}
+
+Default_WildGrass{
+	sprite = ressources/sprites/map/bush.png;
+	template = map.templates.WildGrassTemplate;
+}
+
+Invisible_Teleporter{
+	template = map.templates.TeleporterTemplate;
+}
+
+Invisibile_InterStateTeleporter{
+	template = map.templates.InterstateTeleporterTemplate;
+}
+
+House {
+	template = map.templates.ImageBasedBlockTemplate;
+	sprite = ressources/sprites/map/house_1.png;
+	cells_width = 3;
+	cells_height = 2;
+	enterable = false;
+}
+
+Mudblock {
+	template = map.templates.ImageBasedBlockTemplate;
+	sprite = ressources/sprites/map/mudblock.png;
+	enterabel = false;
+}

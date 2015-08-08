@@ -1,0 +1,16 @@
+meta{
+	name =  Dummy Earth;
+	sprite = ressources/sprites/creature/earth_1.png;
+}
+
+base{
+	hp = 150;
+	mp = 25;
+}
+
+portrait{
+	x = 500;
+	y = 880;
+	width = 330;
+	height = 270;
+}

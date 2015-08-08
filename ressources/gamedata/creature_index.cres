@@ -1,0 +1,10 @@
+creatures{
+	creature_dummy 		= ressources/gamedata/creature/creature_dummy.cres;
+	creature_dummy_rare 	= ressources/gamedata/creature/creature_dummy_rare.cres;
+	creature_fire_1 = ressources/gamedata/creature/creature_fire_1.cres;
+	creature_water_1 = ressources/gamedata/creature/creature_water_1.cres;
+	creature_metal_1 = ressources/gamedata/creature/creature_metal_1.cres;
+	creature_ice_1 = ressources/gamedata/creature/creature_ice_1.cres;
+	creature_dark_1 = ressources/gamedata/creature/creature_dark_1.cres;
+	creature_earth_1 = ressources/gamedata/creature/creature_earth_1.cres;
+}

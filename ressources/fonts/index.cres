@@ -1,0 +1,4 @@
+fonts{
+	visitor_1 = ressources/fonts/visitor1.ttf;
+	visitor_2 = ressources/fonts/visitor2.ttf;
+}

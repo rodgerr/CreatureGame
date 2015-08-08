@@ -1,0 +1,5 @@
+meta {
+SPAWNPOINT_Y = 0;
+SPAWNPOINT_X = 0;
+climate = default;
+}

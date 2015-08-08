@@ -1,0 +1,16 @@
+meta{
+	name =  Dummy Ice;
+	sprite = ressources/sprites/creature/ice_1.png;
+}
+
+base{
+	hp = 90;
+	mp = 100;
+}
+
+portrait{
+	x = 240;
+	y = 560;
+	width = 330;
+	height = 270;
+}

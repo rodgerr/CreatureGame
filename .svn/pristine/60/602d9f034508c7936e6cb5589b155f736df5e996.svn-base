@@ -1,0 +1,8 @@
+grass_default{
+	creature_dummy = 40;
+}
+
+grass_rare{
+	creature_dummy_rare = 5;
+	creature_dummy = 10;
+}

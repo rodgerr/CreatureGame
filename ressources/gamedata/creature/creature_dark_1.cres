@@ -1,0 +1,16 @@
+meta{
+	name =  Dummy Dark;
+	sprite = ressources/sprites/creature/dark_1.png;
+}
+
+base{
+	hp = 25;
+	mp = 100;
+}
+
+portrait{
+	x = 50;
+	y = 200;
+	width = 330;
+	height = 270;
+}

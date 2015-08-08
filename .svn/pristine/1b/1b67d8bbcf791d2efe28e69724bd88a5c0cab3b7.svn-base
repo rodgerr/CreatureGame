@@ -1,0 +1,18 @@
+creature_render_settings{
+	hp_bar_color_h = 0.45;
+	hp_bar_color_s = 0.90;
+	hp_bar_color_b = 0.70;
+		
+	medium_dmg_treshhold = 33;
+	medium_dmg_color_h = 0.15;
+	medium_dmg_color_s = 1.0;
+	medium_dmg_color_b = 0.85;
+
+	critical_dmg_treshhold = 15;
+	critical_dmg_color_h = 0.0;
+	critical_dmg_color_s = 1.0;
+	critical_dmg_color_b = 0.75;
+	
+	//label_font = visitor_2;
+}
+

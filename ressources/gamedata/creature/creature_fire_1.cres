@@ -1,0 +1,16 @@
+meta{
+	name =  Dummy Fire;
+	sprite = ressources/sprites/creature/fire_1.jpg;
+}
+
+base{
+	hp = 75;
+	mp = 75;
+}
+
+portrait{
+	x = 1420;
+	y = 184;
+	width = 330;
+	height = 270;
+}

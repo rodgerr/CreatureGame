@@ -1,0 +1,17 @@
+//this class contains the sprites which are used by the implemented MovementBehaviours
+//nodes in this file are referenced by the classes SimpleName
+//each node should contain a up/down/left/right value or else a error will occur
+
+RunningMovementBehaviour{
+	UP = ressources/sprites/player/player_top.png;
+	DOWN = ressources/sprites/player/player_bot.png;
+	LEFT = ressources/sprites/player/player_left.png;
+	RIGHT = ressources/sprites/player/player_right.png;
+}
+
+WaterMovementBehaviour{
+	UP = ressources/sprites/player/surf_top.png;
+	DOWN = ressources/sprites/player/surf_down.png;
+	LEFT = ressources/sprites/player/surf_left.png;
+	RIGHT = ressources/sprites/player/surf_right.png;
+}

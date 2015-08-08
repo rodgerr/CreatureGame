@@ -1,0 +1,35 @@
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Map.Entry;
+
+import accessory.CLog;
+import accessory.ConfigStore;
+import accessory.cres.CResNode;
+import accessory.cres.CResReader;
+
+
+
+
+public class Hello {
+
+	public static void main(String[] args) {
+		CResReader reader = new CResReader();
+		ArrayList<CResNode> blocks = reader.readFile("ressources/appdata/editor_blockentities.cres");
+		
+		for (CResNode cResNode : blocks) {
+			try {
+				Class blockClass = Class.forName(ConfigStore.getMetaValue("BlockPackage")+cResNode.getNodeValue("class"));
+
+				
+			} catch (ClassNotFoundException e) {
+				CLog.error("Error while initiating block class '"+cResNode.getNodeValue("class")+"'");
+				CLog.error(e);
+			} catch (Exception e) {
+				CLog.error(e);
+			} 
+		}
+		
+	}
+}

@@ -1,0 +1,8 @@
+files      {
+test_1 = ressources/map/test1.crtm;
+test_name = ressources/map/test1.crtm;
+unnamed = ressources/map/test1.crtm;
+house_test_1 = ressources/map/house_test_1.crtm;
+ice_cave_1 = ressources/map/ice_cave_1.crtm;
+main = ressources/map/Main.crtm;
+}

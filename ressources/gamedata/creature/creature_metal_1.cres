@@ -1,0 +1,16 @@
+meta{
+	name =  Dummy Metal;
+	sprite = ressources/sprites/creature/metal_1.png;
+}
+
+base{
+	hp = 115;
+	mp = 50;
+}
+
+portrait{
+	x = 235;
+	y = 306;
+	width = 330;
+	height = 270;
+}

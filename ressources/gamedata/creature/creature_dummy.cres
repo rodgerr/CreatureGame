@@ -1,0 +1,15 @@
+meta{
+	name = Creature Dummy;
+}
+
+base{
+	hp = 50;
+	mp = 50;
+}
+
+portrait{
+	x = 1420;
+	y = 184;
+	width = 330;
+	height = 270;
+}

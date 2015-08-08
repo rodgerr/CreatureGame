@@ -1,0 +1,16 @@
+meta{
+	name =  Dummy Water;
+	sprite = ressources/sprites/creature/water_1.png;
+}
+
+base{
+	hp = 100;
+	mp = 80;
+}
+
+portrait{
+	x = 440;
+	y = 520;
+	width = 330;
+	height = 270;
+}

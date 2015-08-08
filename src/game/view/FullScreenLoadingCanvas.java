@@ -1,0 +1,219 @@
+package game.view;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.Rectangle;
+
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
+public class FullScreenLoadingCanvas extends JPanel implements Runnable{
+
+	
+	private static final int SPREAD_SLEEP = 50;
+	private static final Color BACKGROUND_COLOR = Color.BLACK;
+	public static final int FRAGMENT_SIZE = 25;
+	
+	//loop
+	private Thread animatorThread;
+	private volatile boolean running;
+	
+	//render stuff
+	private Color[][] fragments;
+	private Color[][] strokes;
+	private Point renderStart;
+	private int iterations;
+	private float baseStrokeColor;
+	
+	private int currentHeight;
+	private int currentWidth;
+	
+	public FullScreenLoadingCanvas(int width, int height){
+		resetRaster(width, height);
+	}
+
+	@Override
+	protected void paintComponent(Graphics arg0) {
+		Graphics2D g2d = (Graphics2D)arg0;
+		//g2d.setColor(Color.BLACK);
+		g2d.setPaint(new GradientPaint(renderStart, Color.BLACK, new Point(currentWidth, currentHeight), Color.GRAY));
+		g2d.fillRect(0, 0, this.getParent().getWidth(), this.getParent().getHeight());
+		
+				
+		for (int i = 0; i < fragments.length; i++) {
+			for (int j = 0; j < fragments[0].length; j++) {
+				Color rect = fragments[i][j];
+
+				if(rect != null){
+					
+					g2d.setColor(rect);
+					g2d.fillRect(i*FRAGMENT_SIZE, j*FRAGMENT_SIZE, FRAGMENT_SIZE-2, FRAGMENT_SIZE-2);
+					
+					//g2d.setColor(new Color(Integer.parseInt("3F3F3F",16)));
+					g2d.setColor(Color.BLACK);
+					g2d.drawRect(i*FRAGMENT_SIZE, j*FRAGMENT_SIZE, FRAGMENT_SIZE-2, FRAGMENT_SIZE-2);
+					
+				}
+				
+			}
+		}
+		
+	}
+
+
+
+	public void start(){
+		if(!running || animatorThread == null){
+			running = true;
+			animatorThread = new Thread(this);
+			animatorThread.start();
+		}
+	}
+	
+	@Override
+	public void run() {
+		while(running){
+			addFragments(1);
+			repaint();
+			
+			if(iterations > 100){
+				resetRaster(currentWidth, currentHeight);
+			}
+			
+			try {
+				Thread.sleep(SPREAD_SLEEP);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+
+
+	private void resetRaster(int width, int height){
+		iterations = 0;
+		
+		currentHeight = height;
+		currentWidth = width;
+		
+		int h_fragments = height/FRAGMENT_SIZE;
+		int w_fragments = width/FRAGMENT_SIZE;
+		
+		int xRenderStart = 1;
+		int yRenderStart = 1;
+		
+		
+		//create random startpoint and grow direction in the grid
+		int direction = (int) (Math.random()*4);
+		
+		switch (direction) {
+		case 0:
+			//left
+			yRenderStart = (int) (Math.random()*h_fragments);
+			break;
+
+		case 1:
+			//right
+			yRenderStart = (int) (Math.random()*h_fragments);
+			xRenderStart = w_fragments-1;
+			break;
+			
+		case 2:
+			//top
+			xRenderStart = (int) (Math.random()*w_fragments);
+			break;
+			
+		case 3:
+			//bottom
+			xRenderStart = (int) (Math.random()*w_fragments);
+			yRenderStart = h_fragments-1;
+			break;
+			
+		default:
+			System.err.println("unexpected direction values; using defaults");
+			break;
+		}
+		
+
+		renderStart = new Point(xRenderStart,yRenderStart);
+		
+		fragments = new Color[w_fragments][h_fragments];
+		strokes = new Color[w_fragments][h_fragments];
+
+		//just make sure evrything is null...
+		for (int i = 0; i < w_fragments; i++) {
+			for (int j = 0; j < h_fragments; j++) {
+				fragments[i][j] = null;
+			}
+		}
+		
+		fragments[xRenderStart][yRenderStart] = Color.WHITE;
+		baseStrokeColor = (float) (Math.random()*255);
+		
+	}
+	
+	private void addFragments(int space) {
+		iterations = iterations + space;
+		
+		try{
+			
+			for(int i = 0; i < iterations+space; i++){
+				
+				for(int j = 0; j < iterations+space; j++){
+					
+					//create randomness effect by not filling every cell
+					if(Math.random() < 0.3){
+						
+						//increase randomness even more
+						if(Math.random() < 0.8){
+							fillFragment((renderStart.x+i)-1, (renderStart.y+j)-1);
+						}
+						
+						if(Math.random() < 0.5){
+							fillFragment((renderStart.x-i)-1, (renderStart.y-j)-1);
+						}
+						
+						if(Math.random() < 0.8){
+							fillFragment((renderStart.x+i)-1, (renderStart.y-j)-1);
+						}
+						
+						if(Math.random() < 0.5){
+							fillFragment((renderStart.x-i)-1, (renderStart.y+j)-1);
+						}
+					}
+
+				}
+				
+			}
+			
+			
+		}
+		catch(ArrayIndexOutOfBoundsException e){
+			System.err.println("hups");
+		}
+
+	}
+
+	/**
+	 * Files raster fragment at coords x and y with a rancom color
+	 * @param x
+	 * @param y
+	 */
+	private void fillFragment(int x, int y){
+		try{
+			if(fragments[x][y] == null){
+				int randomColor = (int) (Math.random()*255);
+				fragments[x][y] = new Color(randomColor, randomColor, randomColor);
+				strokes[x][y] = Color.getHSBColor(baseStrokeColor, ((float)randomColor/255), (float)randomColor/255);
+			}
+		}
+		catch(Exception e){	}
+	}
+	
+}

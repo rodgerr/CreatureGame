@@ -1,0 +1,11 @@
+grafics{
+	loading_frame_width = 600;
+	loading_frame_height = 400;
+	content_frame_width = 1280;
+	content_frame_height = 720;
+	content_frame_fullscreen = false;
+	dialog_width = 400;
+	dialog_height = 200;
+	dialog_x = 20;
+	dialog_y = 100;
+}

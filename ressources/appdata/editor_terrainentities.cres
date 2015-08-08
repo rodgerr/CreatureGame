@@ -1,0 +1,43 @@
+//templates
+//map.templates.BasicTerrainTemplate
+
+
+dirt {
+	template = map.templates.BasicTerrainTemplate;
+	sprite = ressources/sprites/map/dirt.png;
+}
+
+grass {
+	template = map.templates.BasicTerrainTemplate;
+	sprite = ressources/sprites/map/grass.png;
+}
+
+water {
+	template = map.templates.BasicTerrainTemplate;
+	sprite = ressources/sprites/map/water.png;
+	surface = water;
+}
+
+lava {
+	template = map.templates.BasicTerrainTemplate;
+	sprite = ressources/sprites/map/lava.png;
+	surface = water;
+}
+
+ice {
+	template = map.templates.BasicTerrainTemplate;
+	sprite = ressources/sprites/map/ice.png;
+	surface = ice;
+}
+
+//cliff {
+//	template = map.templates.BasicTerrainTemplate;
+//	surface = hill;
+//	sprite = ressources/sprites/map/cliff.png;
+//	direction_render = true;
+//	low_surface = ground;
+//	sprite_north = ressources/sprites/map/cliff_north.png;
+//	sprite_south = ressources/sprites/map/cliff_south.png;
+//	sprite_east = ressources/sprites/map/cliff_east.png;
+//	sprite_west = ressources/sprites/map/cliff_west.png;
+//}
